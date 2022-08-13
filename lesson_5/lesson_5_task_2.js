@@ -112,7 +112,6 @@ for (let i = 0; i < arrTwo.length; i++) {
                 multPosNum = BigInt(multPosNum);
             };
         multPosNum = multPosNum * arrTwo[i];
-        console.log(multPosNum);
     };
 };
 

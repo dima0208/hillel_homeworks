@@ -1,0 +1,46 @@
+body {
+    background-color: gainsboro;
+    color: #fff;
+}
+.slider__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: rgb(125, 123, 123);
+    border-radius: 10px;
+}
+
+.slider__image {
+    width: 650px;
+    height: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+._button {
+    background-color: #fff;
+    border: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 7px 20px;
+    margin: 10px 5px;
+    font-weight: 600;
+}
+._button:hover {
+    box-shadow: 0 0 10px aquamarine;
+}
+._lock {
+    pointer-events: none;
+    background-color: rgb(197, 197, 197);
+}
+.slider__progress-text {
+    margin-top: 370px;
+    z-index: 5;
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+}

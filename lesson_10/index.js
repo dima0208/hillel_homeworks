@@ -13,39 +13,51 @@ const images = [
   './img/10.jpg',
 ];
 
-const buttonPrev = document.querySelector('.slider__prev-button');
-const buttonNext = document.querySelector('.slider__next-button');
 const buttonContainer = document.querySelector('.slider__button-container');
-const progressText = document.querySelector('.slider__progress-text');
-
+// еще привыкаю к переносам prettier
 let number = 0;
-progressText.innerHTML = `Фото ${number + 1} из ${images.length}`;
-lockedButton();
+buttonContainer
+  .closest('.slider__wrapper')
+  .querySelector('.slider__progress-text').innerHTML = `Фото ${number + 1} из ${
+  images.length
+}`;
 
 buttonContainer.addEventListener('click', function (event) {
   if (event.target.classList.contains('slider__prev-button')) {
-    this.closest('.slider__wrapper').querySelector(
-      '.slider__content'
-    ).innerHTML = `<img class = "slider__image" src="${images[--number]}">`; // слегка странноватые переносы строк от Prettier, я его настрою к следующему ДЗ
+    this.closest('.slider__wrapper')
+      .querySelector('.slider__image')
+      .setAttribute('src', images[--number]);
   }
   if (event.target.classList.contains('slider__next-button')) {
-    this.closest('.slider__wrapper').querySelector(
-      '.slider__content'
-    ).innerHTML = `<img class = "slider__image" src="${images[++number]}">`;
+    this.closest('.slider__wrapper')
+      .querySelector('.slider__image')
+      .setAttribute('src', images[++number]);
   }
-  lockedButton();
-  progressText.innerHTML = `Фото ${number + 1} из ${images.length}`;
-});
 
-function lockedButton() {
-  if (number < 1) {
-    buttonPrev.classList.add('_lock');
-  } else {
-    buttonPrev.classList.remove('_lock');
-  }
-  if (number > images.length - 2) {
-    buttonNext.classList.add('_lock');
-  } else {
-    buttonNext.classList.remove('_lock');
-  }
-}
+  let lockedButton = () => {
+    if (number < 1) {
+      this.closest('.slider__wrapper').querySelector(
+        '.slider__prev-button'
+      ).disabled = true;
+    } else {
+      this.closest('.slider__wrapper').querySelector(
+        '.slider__prev-button'
+      ).disabled = false;
+    }
+    if (number == images.length - 1) {
+      this.closest('.slider__wrapper').querySelector(
+        '.slider__next-button'
+      ).disabled = true;
+    } else {
+      this.closest('.slider__wrapper').querySelector(
+        '.slider__next-button'
+      ).disabled = false;
+    }
+  };
+  lockedButton();
+  buttonContainer
+    .closest('.slider__wrapper')
+    .querySelector('.slider__progress-text').innerHTML = `Фото ${
+    number + 1
+  } из ${images.length}`;
+});

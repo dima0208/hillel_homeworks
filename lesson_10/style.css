@@ -2,7 +2,7 @@ body {
     background-color: gainsboro;
     color: #fff;
 }
-.slider__container {
+.slider__wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,6 @@ body {
     background-color: rgb(125, 123, 123);
     border-radius: 10px;
 }
-
 .slider__image {
     width: 650px;
     height: 400px;
@@ -33,9 +32,9 @@ body {
 ._button:hover {
     box-shadow: 0 0 10px aquamarine;
 }
-._lock {
-    pointer-events: none;
+._button[disabled] {
     background-color: rgb(197, 197, 197);
+    pointer-events: none;
 }
 .slider__progress-text {
     margin-top: 370px;

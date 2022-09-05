@@ -17,8 +17,10 @@ body {
 }
 .todo-form {
     position: relative;
+    margin-bottom: 10px;
 }
 .todo-list__title {
+    margin-bottom: 30px;
     text-align: center;
     color: rgba(32, 30, 30);
 }
@@ -45,6 +47,11 @@ body {
 }
 .todo-list__button:hover {
     background-color: rgb(54, 120, 252);
+}
+.todo-list__option {
+    height: 25px;
+    border-radius: 3px;
+    border: 2px solid rgb(95,123,167);
 }
 .todo-list__list {
     margin-top: 60px;
@@ -94,6 +101,10 @@ body {
     border: 2px solid red;
 }
 .error-text {
+    top: 40px;
     position: absolute;
     color: red;
+}
+._hidden {
+    display: none;
 }

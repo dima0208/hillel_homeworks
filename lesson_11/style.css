@@ -38,6 +38,7 @@ body {
 }
 .todo-list__button {
     color: rgb(255, 255, 255);
+    min-width: 60px;
     padding: 5px 15px;
     background-color: rgb(43,107,234);
     border: 1px solid rgb(43,107,234);
@@ -59,6 +60,7 @@ body {
 .todo-list__item {
     position: relative;
     display: flex;
+    min-height: 51px;
     align-items: center;
     background-color: rgb(196,225,229);
     margin-bottom: 10px;
@@ -72,6 +74,7 @@ body {
     width: 18px;
     height: 18px;
     transition: 0.3s;
+    margin-left: 10px;
 }
 .todo-list__checkbox:hover {
     transform: scale(1.15);

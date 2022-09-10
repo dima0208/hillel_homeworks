@@ -4,7 +4,7 @@ const todoForm = document.forms.todo;
 const list = document.querySelector('.todo-list__list');
 const input = document.querySelector('.todo-list__input');
 const select = document.querySelector('.todo-list__option');
-let itemsArray = [];
+let itemsArray = []; // let потому что, пришлось перезаписать массив, чтобы его распарсить в 224 строке
 let counter = 0;
 // localStorage.clear();
 
@@ -27,10 +27,10 @@ todoForm.addEventListener('submit', function (event) {
     isDone: false,
   };
 
-  // 2. Доавляем в массив созданный объект
+  // 2. Добавляем в массив созданный объект
   itemsArray.push(newItem);
 
-  // ---Part 3---  Пуш в localStorage
+  // Пуш в localStorage
   localStorage.setItem('taskData', JSON.stringify(itemsArray));
 
   // 3. Создаем блок нашей заметки
@@ -43,6 +43,11 @@ todoForm.addEventListener('submit', function (event) {
   taskLabel.classList.add('todo-list__label');
   taskLabel.textContent = ++counter + '. ' + input.value.trim();
   taskItem.append(taskLabel);
+
+  const taskEditButton = document.createElement('button');
+  taskEditButton.classList.add('todo-list__button');
+  taskEditButton.textContent = 'Edit';
+  taskItem.append(taskEditButton);
 
   const taskCheckbox = document.createElement('input');
   taskCheckbox.classList.add('todo-list__checkbox');
@@ -66,6 +71,7 @@ list.addEventListener('click', function (event) {
     const neededTask = itemsArray.find((item) => item.id == itemId);
     // 3. Обращаемся по клику на чекбокс конкретного item, к свойству его объекта "isDone" и меняем его на true
     neededTask.isDone = event.target.checked;
+    // 4. Обновляем данные в localStorage
     localStorage.setItem('taskData', JSON.stringify(itemsArray));
   }
 
@@ -94,7 +100,7 @@ list.addEventListener('click', function (event) {
   }
 
   if (event.target.classList.contains('todo-list__close-icon')) {
-    // ---Part 3--- Удаление из массива itemsArray объекта, id которого, соответствует data-id dom-элемента, который мы будем удалять по клику на крестик
+    // Удаление из массива itemsArray объекта, id которого, соответствует data-id dom-элемента, который мы будем удалять по клику на крестик
     let sameId = itemsArray.findIndex(function (element) {
       return (
         element.id ==
@@ -102,10 +108,58 @@ list.addEventListener('click', function (event) {
       );
     });
     itemsArray.splice(sameId, 1);
+
+    // Обновляем данные в localStorage
     localStorage.setItem('taskData', JSON.stringify(itemsArray));
 
     // Удаление dom-элемента по клику на крестик
     event.target.closest('.todo-list__item').remove();
+  }
+
+  // Блок редактирования введенной заметки ( Часть --Part 3--)
+  if (
+    // Проверка, была ли нажата уже кнопка редактирования в самой заметке
+    event.target.classList.contains('todo-list__button') &&
+    event.target.classList.contains('_editing')
+  ) {
+    // Исключение повтора вывода сообщения об ошибке при многократном клике по кнопке Add
+    if (todoForm.querySelector('.error-text')) {
+      todoForm.querySelector('.error-text').remove();
+    }
+    let editInputValue = event.target
+      .closest('.todo-list__item')
+      .querySelector('input').value;
+    if (!editInputValue) {
+      alert('Поле редактирования заметки не может быть пустым');
+      return;
+    }
+    event.target.classList.remove('_editing');
+    event.target.textContent = 'Edit';
+    event.target
+      .closest('.todo-list__item')
+      .querySelector('.todo-list__label').textContent = editInputValue;
+    event.target.closest('.todo-list__item').querySelector('input').remove();
+
+    // 1. получаем id из параметра "data-id" dom-елемента в нашу переменную
+    const editInputId = event.target
+      .closest('.todo-list__item')
+      .getAttribute('data-id');
+    // 2. Находим в массиве item-ов объект с "data-id" соответстующего нашему клику
+    const neededObjectId = itemsArray.find((item) => item.id == editInputId);
+    // 3. Обращаемся по клику на чекбокс конкретного item, к свойству его объекта "isDone" и меняем его на true
+    neededObjectId.name = editInputValue;
+    // 4. Обновляем данные в locasStorage
+    localStorage.setItem('taskData', JSON.stringify(itemsArray));
+  } else if (event.target.classList.contains('todo-list__button')) {
+    // Добавление самого инпута для ввода данных при редактировании
+    event.target.textContent = 'Ok';
+    event.target.classList.add('_editing');
+    const editInput = document.createElement('input');
+    editInput.setAttribute('type', 'text');
+    event.target
+      .closest('.todo-list__item')
+      .querySelector('.todo-list__label').textContent = '';
+    event.target.closest('.todo-list__item').prepend(editInput);
   }
 });
 
@@ -114,7 +168,7 @@ function errorMessage(element, textErrorMessage) {
   message.classList.add('error-text');
   message.textContent = textErrorMessage;
   element.classList.add('_error');
-  element.closest('.todo-list__input-part').after(message);
+  element.before(message);
 }
 
 // Очистка полей от ошибок если пользователь начинает вводить данные
@@ -166,12 +220,12 @@ function filterTasks() {
 // -------------------------- Part 3 -----------------------------------
 
 if (!localStorage.getItem('taskData')) {
-  console.log('localStorage is empty');
+  console.log('LocalStorage is empty');
 } else {
   itemsArray = localStorage.getItem('taskData');
   itemsArray = JSON.parse(itemsArray);
 
-  // 3. Создаем блок нашей заметки
+  // Создаем блок нашей заметки из данных в localStorage
   itemsArray.forEach(function (item) {
     const taskItemLS = document.createElement('div');
     taskItemLS.classList.add('todo-list__item');
@@ -182,6 +236,11 @@ if (!localStorage.getItem('taskData')) {
     taskLabelLS.classList.add('todo-list__label');
     taskLabelLS.textContent = ++counter + '. ' + item.name;
     taskItemLS.append(taskLabelLS);
+
+    const taskEditButtonLS = document.createElement('button');
+    taskEditButtonLS.classList.add('todo-list__button');
+    taskEditButtonLS.textContent = 'Edit';
+    taskItemLS.append(taskEditButtonLS);
 
     const taskCheckboxLS = document.createElement('input');
     taskCheckboxLS.classList.add('todo-list__checkbox');

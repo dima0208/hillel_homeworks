@@ -4,13 +4,13 @@ const todoForm = document.forms.todo;
 const list = document.querySelector('.todo-list__list');
 const input = document.querySelector('.todo-list__input');
 const select = document.querySelector('.todo-list__option');
+let itemsArray = [];
 let counter = 0;
-const itemsArray = [];
+// localStorage.clear();
 
 todoForm.addEventListener('submit', function (event) {
   event.preventDefault();
-
-  // Исключение повтора вывода сообщение об ошибке при многократном клике по кнопке Add
+  // Исключение повтора вывода сообщения об ошибке при многократном клике по кнопке Add
   if (todoForm.querySelector('.error-text')) {
     todoForm.querySelector('.error-text').remove();
   }
@@ -30,7 +30,10 @@ todoForm.addEventListener('submit', function (event) {
   // 2. Доавляем в массив созданный объект
   itemsArray.push(newItem);
 
-  //3. Создаем блок нашей заметки
+  // ---Part 3---  Пуш в localStorage
+  localStorage.setItem('taskData', JSON.stringify(itemsArray));
+
+  // 3. Создаем блок нашей заметки
   const taskItem = document.createElement('div');
   taskItem.classList.add('todo-list__item');
   taskItem.setAttribute('data-id', newItem.id); // значение data-id будет вновь сгенерированный id
@@ -63,6 +66,7 @@ list.addEventListener('click', function (event) {
     const neededTask = itemsArray.find((item) => item.id == itemId);
     // 3. Обращаемся по клику на чекбокс конкретного item, к свойству его объекта "isDone" и меняем его на true
     neededTask.isDone = event.target.checked;
+    localStorage.setItem('taskData', JSON.stringify(itemsArray));
   }
 
   if (
@@ -89,8 +93,18 @@ list.addEventListener('click', function (event) {
     filterTasks();
   }
 
-  // Удаление по клику на крестик
   if (event.target.classList.contains('todo-list__close-icon')) {
+    // ---Part 3--- Удаление из массива itemsArray объекта, id которого, соответствует data-id dom-элемента, который мы будем удалять по клику на крестик
+    let sameId = itemsArray.findIndex(function (element) {
+      return (
+        element.id ==
+        event.target.closest('.todo-list__item').getAttribute('data-id')
+      );
+    });
+    itemsArray.splice(sameId, 1);
+    localStorage.setItem('taskData', JSON.stringify(itemsArray));
+
+    // Удаление dom-элемента по клику на крестик
     event.target.closest('.todo-list__item').remove();
   }
 });
@@ -126,8 +140,6 @@ function filterTasks() {
     const processArray = itemsArray.filter(function (item) {
       return item.isDone == true;
     });
-    // Да знаю я, знаю, что for не является оптимальным. По-другому 2 массива разной длины я сравнить не могу.
-    // По идее этот перебор тоже можно сделать в виде функции, но мне кажется, будет выглядеть еще сложнее, чем без нее.
     for (let i = 0; i < processArray.length; i++) {
       for (let j = 0; j < domArray.length; j++) {
         if (processArray[i].id == domArray[j].getAttribute('data-id')) {
@@ -149,4 +161,38 @@ function filterTasks() {
       }
     }
   }
+}
+
+// -------------------------- Part 3 -----------------------------------
+
+if (!localStorage.getItem('taskData')) {
+  console.log('localStorage is empty');
+} else {
+  itemsArray = localStorage.getItem('taskData');
+  itemsArray = JSON.parse(itemsArray);
+
+  // 3. Создаем блок нашей заметки
+  itemsArray.forEach(function (item) {
+    const taskItemLS = document.createElement('div');
+    taskItemLS.classList.add('todo-list__item');
+    taskItemLS.setAttribute('data-id', item.id);
+    list.append(taskItemLS);
+
+    const taskLabelLS = document.createElement('p');
+    taskLabelLS.classList.add('todo-list__label');
+    taskLabelLS.textContent = ++counter + '. ' + item.name;
+    taskItemLS.append(taskLabelLS);
+
+    const taskCheckboxLS = document.createElement('input');
+    taskCheckboxLS.classList.add('todo-list__checkbox');
+    taskCheckboxLS.setAttribute('type', 'checkbox');
+    if (item.isDone) {
+      taskCheckboxLS.setAttribute('checked', true);
+    }
+    taskItemLS.append(taskCheckboxLS);
+
+    const closeIconLS = document.createElement('div');
+    closeIconLS.classList.add('todo-list__close-icon');
+    taskItemLS.append(closeIconLS);
+  });
 }

@@ -1,0 +1,65 @@
+* {
+    font-family: Montserrat;
+}
+body {
+    background-color: gainsboro;
+}
+.regexp-form__wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.regexp-form__title {
+    text-align: center;
+}
+.regexp-form__label {
+    display: block;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+.regexp-form__item {
+    margin: 0 0 25px 0;
+}
+.regexp-form__input {
+    width: 91%;
+    height: 35px;
+    padding: 0 20px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+.regexp-form__button {
+    width: 100%;
+    min-height: 42px;
+    margin-top: 20px;
+    background-color: rgb(108, 194, 165);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgb(108, 194, 165);
+    border-radius: 10px;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+.regexp-form__button:hover {
+    background-color:rgb(115, 207, 176);
+}
+._errorText {
+    font-size: 14px;
+    color: red;   
+    margin: 5px 0;
+}
+._error {
+    border: 1px solid red;
+}
+._successText {
+    color: rgb(4, 179, 4);
+    text-align: center;
+    font-size: 18px;
+}
+
+#cardInput::-webkit-outer-spin-button,
+#cardInput::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}

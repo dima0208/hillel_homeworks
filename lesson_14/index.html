@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regexp-form</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800" rel="stylesheet" />
+</head>
+<body>
+    <div class="regexp-form__wrapper">
+        <form id="regexpForm" class="regexp-form__form" name="regexpForm">
+            <h2 class="regexp-form__title">Форма regExp</h2>
+            <div class="regexp-form__item">
+                <label for="nameInput" class="regexp-form__label">Имя*:</label>
+                <input id="nameInput" type="text" class="regexp-form__input" name="name" placeholder="Латиницей, с заглавной буквы" autocomplete="off">
+            </div>
+            <div class="regexp-form__item">
+                <label for="surnameInput" class="regexp-form__label">Фимилия*:</label>
+                <input id="surnameInput" type="text" class="regexp-form__input" name="surname" placeholder="Латиницей, с заглавной буквы" autocomplete="off">
+            </div>
+            <div class="regexp-form__item">
+                <label for="numberInput" class="regexp-form__label">Номер телефона*:</label>
+                <input id="numberInput" type="tel" class="regexp-form__input" name="number" value="+380" maxlength="13" autocomplete="off">
+            </div>
+            <div class="regexp-form__item">
+                <label for="emailInput" class="regexp-form__label">Email*:</label>
+                <input id="emailInput" type="text" class="regexp-form__input" name="email" placeholder="example@gmail.com" autocomplete="off">
+            </div>
+            <div class="regexp-form__item">
+                <label for="cardInput" class="regexp-form__label">Платежная карта*:</label>
+                <input id="cardInput" type="number" class="regexp-form__input" name="card" placeholder="16 цифр" autocomplete="off">
+            </div>
+            <p style="font-size: 14px;">* - поля обязательные для заполнения</p>
+            <button type="submit" class="regexp-form__button">Отправить</button>
+        </form>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

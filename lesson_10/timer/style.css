@@ -2,7 +2,8 @@
     font-family: Montserrat;
 }
 body {
-    background-color: gainsboro;
+    color: white;
+    background-color: rgba(64,186,236,255);
 }
 label {
     display: block;
@@ -11,8 +12,54 @@ label {
 .countdown-timer__wrapper {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 150px auto;
 }
 .form__item {
     margin: 20px 0;
+}
+.form__input {
+    width: 40%;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+._button {
+    display: inline-block;
+    padding: 5px 15px;
+    color: white;
+    background-color: rgba(7,2,65,255);
+    border: 1px solid rgba(7,2,65,255);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.form__button._active {
+    display: none;
+}
+.form__button:hover {
+    background-color: rgba(7,2,100,255);
+}
+.countdown-timer__time-panel {
+    display: flex;
+    justify-content: center;
+}
+.countdown-timer__time-panel p {
+    margin: 0 5px;
+}
+.timecode {
+    margin: 5px;
+    padding: 5px;
+    background-color: rgba(7,2,65,255);
+    border-radius: 5px;
+}
+.form__stop-button {
+    display: none;
+    background-color: red;
+    border: 1px solid red;
+}
+.form__stop-button._active {
+    display: inline-block;
+}
+.form__stop-button:hover {
+    background-color: rgb(255, 67, 67)
 }

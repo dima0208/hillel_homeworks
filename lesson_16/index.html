@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototypes</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600" rel="stylesheet" />
+</head>
+<body>
+    <div class="prototypes__wrapper">
+        <div class="prototypes__forms-container">
+            <form id="userForm" class="prototypes__form" name="userForm">
+                <h3>Данные покупателя</h3>
+                <div class="prototypes__form-item">
+                    <label for="userNameInput" class="prototypes__form-label">Имя*:</label>
+                    <input id="userNameInput" type="text" class="prototypes__form-input _userReq" name="userName" autocomplete="off">
+                </div>
+                <div class="prototypes__form-item">
+                    <label for="userSurnameInput" class="prototypes__form-label">Фамилия*:</label>
+                    <input id="userSurnameInput" type="text" class="prototypes__form-input _userReq" name="userSurname" autocomplete="off">
+                </div>
+                <div class="prototypes__form-item">
+                    <label for="userCountrySelect" class="prototypes__form-label">Страна*:</label>
+                    <select id="userCountrySelect" class="prototypes__form-select" name="userCountry">
+                        <option>Ukraine</option>
+                        <option>Poland</option>
+                        <option>USA</option>
+                    </select>
+                </div>
+                <div class="prototypes__form-item">
+                    <label for="userPhoneInput" class="prototypes__form-label">Номер телефона*:</label>
+                    <input id="userPhoneInput" type="number" class="prototypes__form-input _userReq" name="userPhone" value="380" autocomplete="off">
+                </div>
+                <button type="submit" class="prototypes__form-button" name="userButton">Подтвердить</button>
+                <button class="prototypes__changeUserButton" name="changeUserButton">Сменить пользователя</button>
+            </form>
+            <form id="carForm" class="prototypes__form" name="carForm">
+                <h3>Поиск автомобиля</h3>
+                <div class="prototypes__form-item">
+                    <label for="carLabelSelect" class="prototypes__form-label">Марка автомобиля*:</label>
+                    <select id="carLabelSelect" class="prototypes__form-select" name="carLabel" disabled autocomplete="off">
+                        <option>Ford</option>
+                        <option>Wolksvagen</option>
+                        <option>Mazda</option>
+                        <option>Toyota</option>
+                    </select>
+                </div>
+                <div class="prototypes__form-item">
+                    <label for="carYearInput" class="prototypes__form-label">Год выпуска*:</label>
+                    <select id="carYearSelect" class="prototypes__form-select" name="carYear" disabled>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                    </select>
+                </div>
+                <div class="prototypes__form-item">
+                    <label for="carPriceInput" class="prototypes__form-label">Цена $*:</label>
+                    <input id="carPriceInput" type="number" class="prototypes__form-input _carReq" name="carPrice" disabled autocomplete="off" >
+                </div>
+                <button type="submit" class="prototypes__form-button carButton" name="carButton" disabled>Купить</button>
+            </form>
+        </div>
+        <div class="prototypes__buy-list"></div>
+        <button class="prototypes__form-button _clearButton">Очистить Local Storage</button>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(25, 25, 25);
+    font-family: Montserrat;
+}
+.swiper-slide img {
+    max-width: 100%;
+    object-fit: contain;
+}
+.swiper {
+    max-width: 800px;
+    height: 600px;
+    text-align: center;
+  }
+ .swiper-pagination.custom__pagination span {
+    background-color: #fff;
+} 
+.swiper .swiper-button-prev::after, .swiper .swiper-button-next::after {
+    color: #fff;
+}

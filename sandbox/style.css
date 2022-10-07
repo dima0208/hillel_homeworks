@@ -1,0 +1,23 @@
+h1 {
+    color: red;
+}
+
+.class-h1 {
+    color: blue;
+}
+
+
+#id-h1 {
+    color: green;
+}
+
+h1.class-h1 {
+    color: blueviolet;
+}
+
+p.class-p {
+    color: chartreuse;
+}
+div .class-p {
+    color: red;
+}

@@ -73,21 +73,44 @@ const images = [
 ];
 
 // Блок получения случайной картинки при загрузке/перезагруке сайта
-let randomImage = Math.floor(Math.random() * images.length);
-const imageContainer = document.querySelector('.task-four__image-container');
-imageContainer.innerHTML = `<img class = "image" src = "${images[randomImage]}">`;
+const getRandomImage = (maxNumber) => Math.floor(Math.random() * maxNumber);
+const randomImage = getRandomImage(images.length);
+const imageContainers = document.querySelectorAll(
+  '.task-four__image-container'
+);
+imageContainers.forEach((item) => {
+  item.innerHTML = `<img class = "image" src = "${
+    images[getRandomImage(images.length)]
+  }">`;
+});
 
-// Блок рандома картинки с помощью кнопки
-let prevRandomImage = randomImage;
-const randomButton = document.querySelector('.task-four__button');
-randomButton.addEventListener('click', noRepeat);
-
-function noRepeat() {
-  randomImage = Math.floor(Math.random() * images.length);
-  if (prevRandomImage === randomImage) {
-    return noRepeat();
-  } else {
-    prevRandomImage = randomImage;
-    imageContainer.innerHTML = `<img class = "image" src = "${images[randomImage]}">`;
-  }
+// Блок смены картинки при нажатии на кнопки
+function changeImg() {
+  let prev = getRandomImage(images.length);
+  let next;
+  return function swap() {
+    next = getRandomImage(images.length);
+    if (prev === next) {
+      swap();
+      return;
+    } else {
+      this.closest('.random-image__container').querySelector(
+        '.task-four__image-container'
+      ).innerHTML = `<img class = "image" src = "${images[next]}">`;
+      prev = next;
+    }
+  };
 }
+
+const randomButton = document.querySelector('[data-id="0"]');
+const swap1 = changeImg();
+console.log(swap1);
+randomButton.addEventListener('click', swap1);
+
+const randomButton2 = document.querySelector('[data-id="1"]');
+const swap2 = changeImg();
+randomButton2.addEventListener('click', swap2);
+
+const randomButton3 = document.querySelector('[data-id="2"]');
+const swap3 = changeImg();
+randomButton3.addEventListener('click', swap3);

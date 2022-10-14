@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather widget</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600" rel="stylesheet" />
+</head>
+<body>
+    <div class="weather__wrapper">
+        <div id="weatherWidget" class="weather__container">
+            <div class="weather__left-column p-2">
+                <h3 class="weather__city"></h3>
+                <p class="weather__date"></p>
+                <h2 class="weather__time"></h2>
+                <p class="weather__humidity mb-2"></p>
+                <p class="weather__pressure mb-2"></p>
+                <p class="weather__wind mb-2"></p>
+            </div>
+            <div class="weather__right-column p-2">
+                <img class="weather__icon" alt="weather-condition">
+                <h3 class="weather__temp"></h3>
+                <p class="weather__description"></p>
+                <button class="weather__refresh-button"><img class="weather__refresh-icon" src='./img/01.png' alt="weather-icon"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./functions.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

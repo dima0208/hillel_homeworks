@@ -1,8 +1,6 @@
 * {
     font-family: Montserrat;
 }
-.weather__wrapper {
-}
 .weather__container {
     display: flex;
     justify-content: space-around;
@@ -15,19 +13,9 @@
     display: flex;
     flex-direction: column;
 }
-.weather__city {
-}
-.weather__date {
-}
 .weather__time {
     margin-bottom: 15px;
     letter-spacing: 1px;
-}
-.weather__humidity {
-}
-.weather__pressure {
-}
-.weather__wind {
 }
 .weather__right-column {
     display: flex;
@@ -36,10 +24,6 @@
 .weather__icon {
     width: 80px;
     height: 80px;
-}
-.weather__temp {
-}
-.weather__description {
 }
 .weather__refresh-button {
     background-color: rgba(0, 0, 0, 0);

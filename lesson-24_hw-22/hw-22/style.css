@@ -7,6 +7,10 @@ body {
 p {
     font-size: 18px;
 }
+span {
+    color:rgb(212,135,179);
+    font-size: 14px;
+}
 .form {
     display: flex;
     flex-direction: column;
@@ -25,15 +29,30 @@ p {
     color: red;
 }
 .input {
-    min-width: 250px;
+    min-width: 226px;
     min-height: 35px;
-    padding: 0 10px;
     font-size: 16px;
     font-weight: 200;
-    border-radius: 5px;
+    padding: 0 20px;
+    border-radius: 10px;
     border: 0px solid #fff;
     outline: none;
     color: rgb(104,105,142);
+    margin-bottom: 20px;
+}
+.button-id {
+    min-width: 250px;
+    min-height: 35px;
+    border: 0px solid #fff;
+    font-size: 18px;
+    color: rgb(212,135,179);
+    border-radius: 10px;
+    background-color: rgb(104,105,142);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.button-id:hover {
+    transform: scale(1.1);
 }
 .user-email {
     color: rgb(104,105,142);
@@ -57,4 +76,10 @@ p {
     8px -8px 1px rgb(104,105,142),
     9px -9px 1px rgb(104,105,142),
     10px -10px 1px rgb(104,105,142);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

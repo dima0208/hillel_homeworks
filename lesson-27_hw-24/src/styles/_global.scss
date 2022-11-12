@@ -1,0 +1,22 @@
+$primaryColor: tomato;
+$secondaryColor: rgb(68, 56, 56);
+
+
+
+html {
+    font-family: generalFont;
+}
+
+h1 {
+    color: $primaryColor;
+}
+.custom-image {
+    max-width: 300px;
+}
+.container {
+    background: url(../img/02.jpg);
+    max-width: 968px;
+    &__subheader { 
+        color: $secondaryColor;
+    }
+}

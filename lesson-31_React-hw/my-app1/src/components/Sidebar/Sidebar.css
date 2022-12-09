@@ -1,0 +1,20 @@
+.Sidebar {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    max-width: 100px;
+    /* min-height: 600px; */
+    padding: 0 20px;
+    border-right: 1px solid rgb(176, 176, 176);
+}
+.Sidebar__menu-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Sidebar__menu-item {
+    margin: 10px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(176, 176, 176);
+    cursor: pointer;
+}

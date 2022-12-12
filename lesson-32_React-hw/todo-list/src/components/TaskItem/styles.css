@@ -1,0 +1,12 @@
+.TaskItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px 10px;
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+.TaskItem__text {
+    text-align: start;
+}

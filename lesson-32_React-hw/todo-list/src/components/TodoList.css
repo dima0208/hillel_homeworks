@@ -1,0 +1,7 @@
+.TodoList {
+    margin: 0 auto;
+    max-width: 500px;
+}
+.TodoList__form {
+    margin-bottom: 20px;
+}

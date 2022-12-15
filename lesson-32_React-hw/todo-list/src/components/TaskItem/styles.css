@@ -7,6 +7,25 @@
     background-color: gainsboro;
     border-radius: 10px;
 }
+.TaskItem__interaction-container {
+    display: flex;
+    align-items: center;
+}
+.TaskItem__interaction-container button {
+    margin: 0 5px;
+}
 .TaskItem__text {
     text-align: start;
+}
+.TaskItem__checkbox {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
+._crossed {
+    text-decoration: line-through;
+}
+
+._edited {
+    background-color: rgb(182, 182, 182);
 }

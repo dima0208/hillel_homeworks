@@ -1,7 +1,24 @@
 .TodoList {
     margin: 0 auto;
+    padding: 10px;
     max-width: 500px;
+    background-color: rgb(244, 244, 244);
+
+    border-radius: 15px;
 }
 .TodoList__form {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+.TodoList__form-input {
+    width: 60%;
+    padding: 5px;
+    outline: none;
+}
+.TodoList__button {
+    margin: 0 10px;
+    min-height: 30px;
+    padding: 0 10px;
+}
+._error {
+    border: 2px solid red;
 }

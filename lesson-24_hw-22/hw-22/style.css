@@ -1,0 +1,85 @@
+* {
+    font-family: Rubik Bubbles;
+}
+body {
+    background-color: rgb(147,209,209);
+}
+p {
+    font-size: 18px;
+}
+span {
+    color:rgb(212,135,179);
+    font-size: 14px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 968px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    color: rgb(212,135,179);
+    -webkit-text-stroke: 1px #000;
+}
+.post {
+    font-size: 18px;
+    font-weight: 500;
+}
+._error {
+    color: red;
+}
+.input {
+    min-width: 226px;
+    min-height: 35px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: 0px solid #fff;
+    outline: none;
+    color: rgb(104,105,142);
+    margin-bottom: 20px;
+}
+.button-id {
+    min-width: 250px;
+    min-height: 35px;
+    border: 0px solid #fff;
+    font-size: 18px;
+    color: rgb(212,135,179);
+    border-radius: 10px;
+    background-color: rgb(104,105,142);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.button-id:hover {
+    transform: scale(1.1);
+}
+.user-email {
+    color: rgb(104,105,142);
+}
+.comments-title {
+    font-size: 24px;
+}
+.post-title {
+    font-size: 30px;
+}
+.main-title {
+    text-transform: uppercase;
+    font-size: 36px;
+    text-shadow: 1px -1px 1px rgb(104,105,142),
+    2px -2px 1px rgb(104,105,142),
+    3px -3px 1px rgb(104,105,142),
+    4px -4px 1px rgb(104,105,142),
+    5px -5px 1px rgb(104,105,142),
+    6px -6px 1px rgb(104,105,142),
+    7px -7px 1px rgb(104,105,142),
+    8px -8px 1px rgb(104,105,142),
+    9px -9px 1px rgb(104,105,142),
+    10px -10px 1px rgb(104,105,142);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

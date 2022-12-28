@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './styles.css';
+import PropTypes from 'prop-types';
+import './StatusSelect.scss';
 
 export class StatusSelect extends Component {
   render() {
@@ -14,3 +15,12 @@ export class StatusSelect extends Component {
     );
   }
 }
+
+StatusSelect.propTypes = {
+  option: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ),
+};

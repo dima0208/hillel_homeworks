@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { v4 } from 'uuid';
-import './TodoList.css';
-import { StatusSelect } from './StatusSelect';
-import { TaskItem } from './TaskItem';
+import './TodoList.scss';
+import { StatusSelect } from '../StatusSelect';
+import { TaskItem } from '../TaskItem';
 
 const All = 'all';
 const PENDING = 'pend';
@@ -147,40 +147,39 @@ export class TodoList extends Component {
     }));
   };
 
+  getTodosByFilterOption(stateTask) {
+    return this.state.tasks.filter((task) => {
+      if (stateTask === PENDING) return !task.isDone;
+      if (stateTask === DONE) return task.isDone;
+      return task;
+    });
+  }
+
   render() {
     return (
       <div className="TodoList">
         <form className="TodoList__form" onSubmit={this.onSubmitHandler}>
           <h2>What to do?</h2>
-          <input
-            className={`TodoList__form-input ${
-              this.state.error ? ' _error' : ''
-            }`}
-            onChange={this.onChangeHandler}
-            value={this.state.taskText}
-          ></input>
-          {this.state.isEdited ? (
-            <button className="TodoList__button">Save changes</button>
-          ) : (
-            <button className="TodoList__button">Add</button>
-          )}
+          <div className="TodoList__inputField">
+            <input
+              className={`TodoList__form-input ${
+                this.state.error ? ' _error' : ''
+              }`}
+              onChange={this.onChangeHandler}
+              value={this.state.taskText}
+            ></input>
+            <button className="TodoList__button">
+              {this.state.isEdited ? 'Save changes' : 'Add'}
+            </button>
+          </div>
         </form>
         <StatusSelect
           options={SELECT_OPTIONS}
           onChange={this.onStatusSelectHandler}
         />
         <div className="TodoList__list">
-          {this.state.tasks
-            .filter((item) => {
-              if (this.state.showTasks === PENDING) {
-                return item.isDone === false;
-              } else if (this.state.showTasks === DONE) {
-                return item.isDone === true;
-              } else {
-                return item;
-              }
-            })
-            .map(({ taskText, id, isDone, isEdited }, index) => (
+          {this.getTodosByFilterOption(this.state.showTasks).map(
+            ({ taskText, id, isDone, isEdited }, index) => (
               <TaskItem
                 key={id}
                 id={id}
@@ -192,7 +191,8 @@ export class TodoList extends Component {
                 onEditClick={this.onEditButtonHandler}
                 onDeleteClick={this.onDeleteButtonHandler}
               />
-            ))}
+            )
+          )}
         </div>
       </div>
     );

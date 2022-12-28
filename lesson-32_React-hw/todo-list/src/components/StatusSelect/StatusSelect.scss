@@ -1,0 +1,14 @@
+.StatusSelect {
+    padding: 3px 20px;
+    margin-bottom: 15px;
+    outline: none;
+    background-color: rgb(182, 182, 182);
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(209, 207, 207);
+        border: 1px solid rgb(182, 182, 182);
+    }
+}

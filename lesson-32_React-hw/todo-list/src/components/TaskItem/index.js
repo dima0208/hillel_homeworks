@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './styles.css';
+import PropTypes from 'prop-types';
+import './TaskItem.scss';
 
 export class TaskItem extends Component {
   render() {
@@ -11,15 +12,19 @@ export class TaskItem extends Component {
         <div className="TaskItem__interaction-container">
           <button
             disabled={this.props.isEdited}
-            onClick={() => this.props.onDeleteClick(this.props.id)}
-          >
-            Delete
-          </button>
-          <button
-            disabled={this.props.isEdited}
+            className="TaskItem__editButton"
             onClick={() => this.props.onEditClick(this.props.id)}
           >
             Edit
+          </button>
+          <button
+            className={`TaskItem__deleteButton ${
+              this.props.isEdited ? ' _edited' : ''
+            }`}
+            disabled={this.props.isEdited}
+            onClick={() => this.props.onDeleteClick(this.props.id)}
+          >
+            <i className="fa-solid fa-trash-can"></i>
           </button>
           <input
             className="TaskItem__checkbox"
@@ -33,3 +38,14 @@ export class TaskItem extends Component {
     );
   }
 }
+
+TaskItem.propTypes = {
+  taskText: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  isEdited: PropTypes.bool.isRequired,
+  isDone: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onStatusChange: PropTypes.func.isRequired,
+};

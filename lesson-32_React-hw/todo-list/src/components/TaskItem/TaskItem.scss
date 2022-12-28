@@ -1,0 +1,69 @@
+.TaskItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 10px 10px;
+    background-color: rgba(45, 45, 45, 255);
+    border-radius: 10px;
+    
+    &._edited {
+        background-color: rgb(182, 182, 182);
+        pointer-events: none;
+    }
+
+    &__interaction-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__editButton{
+        background-color: rgb(182, 182, 182);
+        border: 1px solid rgb(182, 182, 182);
+        border-radius: 5px;
+        margin: 0 5px;
+        padding: 3px 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(209, 207, 207);
+            border: 1px solid rgb(182, 182, 182);
+        }
+    }
+
+    &__deleteButton {
+        background-color: rgba(45, 45, 45, 255);
+        border: 1px solid rgba(45, 45, 45, 255);
+        margin: 0 5px;
+        cursor: pointer;
+
+        &:hover i {
+            color: #fff;
+        }
+
+        &._edited {
+            background-color: rgb(182, 182, 182);
+            border: 1px solid rgb(182, 182, 182);
+        }
+
+        i {
+            color: rgba(210,208,203,255); 
+        }
+    }
+
+    &__text {
+        text-align: start; 
+
+        &._crossed {
+            text-decoration: line-through;
+        }
+    }
+
+    &__checkbox {
+        width: 15px;
+        height: 15px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+}

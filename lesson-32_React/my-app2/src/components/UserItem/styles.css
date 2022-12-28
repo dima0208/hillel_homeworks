@@ -1,0 +1,11 @@
+.User {
+    padding: 10px;
+    border: 1px solid aqua;
+}
+.User__index {
+    text-decoration: underline;
+    font-style: bold;
+}
+.User__name {
+    font-style: italic;
+}

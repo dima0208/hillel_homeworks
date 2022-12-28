@@ -1,0 +1,23 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: rgb(109, 109, 109);
+    color: #fff;
+}
+.Header__navigation {
+    margin-right: 50px;
+}
+.Header__logo {
+    min-width: 125px;
+    cursor: pointer;
+}
+.Header__menu-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.Header__menu-item {
+    padding: 0 10px;
+    cursor: pointer;
+}
